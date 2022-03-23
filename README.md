@@ -11,7 +11,7 @@ cd ktp-extractor
 Create virtual environment:
 
 ```sh
-python venv env
+python -m venv env
 ```
 
 Run virtual environment:
