@@ -17,7 +17,7 @@ python -m venv env
 Run virtual environment:
 
 ```sh
-env\Scripts\active.bat
+env\Scripts\activate.bat
 ```
 
 Install dependencies:
@@ -38,11 +38,6 @@ Run project:
 python -m flask run
 ```
 
-Access the project from:
-
-```sh
-127.0.0.1:5000
-```
 
 ## Endpoint Documentation
 
