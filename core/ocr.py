@@ -52,10 +52,10 @@ def extract_ktp():
                 image.read(), np.uint8), cv2.IMREAD_UNCHANGED)
             gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
             threshed = cv2.threshold(
-                gray, 127, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
+                gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
             noised = cv2.medianBlur(threshed, 5)
             result = pt.image_to_string((noised))
-            # result.replace('\n', ' ')
+            result.replace('\n', ' ')
 
             if 'NIK' in result and 'Nama' in result and 'Lahir' in result and 'Jenis kelamin' in result and 'Alamat' in result:
                 for word in result.split("\n"):
@@ -94,8 +94,7 @@ def extract_ktp():
                 return jsonify({
                     'success': False,
                     'code': '92',
-                    'message': 'Image blur or less resolution!',
-                    'rawData': result
+                    'message': 'Image blur or low resolution!'
                 })
             else:
                 return jsonify({
