@@ -2,6 +2,10 @@
 
 ## Installation
 
+Install Tesseract and Indonesian Tesseract Language Model on your machine
+
+See : https://tesseract-ocr.github.io/tessdoc/Data-Files-in-different-versions.html
+
 Clone this repository and enter the folder:
 
 ```sh
@@ -14,10 +18,16 @@ Create virtual environment:
 python -m venv env
 ```
 
-Run virtual environment:
+Run virtual environment (for Windows user):
 
 ```sh
 env\Scripts\activate.bat
+```
+
+Run virtual environment (for Unix user):
+
+```sh
+source ./env/bin/activate
 ```
 
 Install dependencies:
@@ -38,9 +48,8 @@ Run project:
 python -m flask run
 ```
 
-
 ## Endpoint Documentation
 
-| URL | Parameter | Type |
-| --- | --------- | ---- |
-| /extract_ktp | img | image (jpg, jpeg, png) |
+| URL          | Parameter | Type                   |
+| ------------ | --------- | ---------------------- |
+| /extract_ktp | img       | image (jpg, jpeg, png) |
