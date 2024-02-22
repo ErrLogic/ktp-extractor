@@ -1,15 +1,13 @@
 import core.ocr as model
 from flask import jsonify
 
-
 class Router:
     @staticmethod
     def run(app):
-        @app.route('/')
+        @app.route('/api/v1')
         def home():
             return jsonify({
                 'success': True,
-                'code': '00',
                 'message': 'KTP Extractor'
             })
 

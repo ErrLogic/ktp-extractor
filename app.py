@@ -4,4 +4,5 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/api/v1/*": {"origins": "*"}})
+
 Router.run(app)
