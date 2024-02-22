@@ -12,6 +12,7 @@ class KTPOCR(object):
         self.master_process()
 
     def process(self, image):
+        pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'
         raw_extracted_text = pytesseract.image_to_string((self.threshed), lang="ind")
         return raw_extracted_text
 
