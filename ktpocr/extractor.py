@@ -56,7 +56,7 @@ class KTPOCR(object):
         for word in extracted_result.split("\n"):
             if "NIK" in word:
                 word = word.split(':')
-                self.result.nik = self.nik_extract(word[-1].replace(" ", "")).translate(replace_table)
+                self.result.nik = self.nik_extract(word[-1].replace(" ", "")).replace("NIK", "").translate(replace_table)
                 continue
 
             if "Nama" in word:
