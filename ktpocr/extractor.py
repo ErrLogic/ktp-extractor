@@ -51,7 +51,7 @@ class KTPOCR(object):
         return res
     
     def extract(self, extracted_result):
-        replace_table = str.maketrans({'—': '', '“': '', '.': '', ':': ''})
+        replace_table = str.maketrans({'—': '', '“': '', '.': '', ':': '', '|': '', '-': ''})
         
         for word in extracted_result.split("\n"):
             if "NIK" in word:
@@ -66,8 +66,8 @@ class KTPOCR(object):
 
             if "Tempat" in word:
                 word = word.split(':')
-                self.result.tanggal_lahir = re.search("([0-9]{2}\-[0-9]{2}\-[0-9]{4})", word[-1])[0].translate(replace_table)
-                self.result.tempat_lahir = word[-1].replace(". "+self.result.tanggal_lahir, '').translate(replace_table)
+                self.result.tanggal_lahir = re.search("([0-9]{2}\-[0-9]{2}\-[0-9]{4})", word[-1])[0]
+                self.result.tempat_lahir = word[-1].replace(". "+self.result.tanggal_lahir, '')
                 continue
 
             if 'Darah' in word:
