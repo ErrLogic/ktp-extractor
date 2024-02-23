@@ -127,15 +127,18 @@ class KTPOCR(object):
 
             if "RTRW" in word:
                 word = word.replace("RTRW",'')
-                try:
-                    content = word.split('/')
-                    
-                    if len(content) > 1:
-                        self.result.rt = word.split('/')[0].strip().translate(replace_table).translate(remove_dash)
-                        self.result.rw = word.split('/')[1].strip().translate(replace_table).translate(remove_dash)
-                except:
+
+                if word is None:
                     self.result.rt = ""
                     self.result.rw = ""
+                else:
+                    try:
+                        if len(word.split('/')) > 1:
+                            self.result.rt = word.split('/')[0].strip().translate(replace_table).translate(remove_dash)
+                            self.result.rw = word.split('/')[1].strip().translate(replace_table).translate(remove_dash)
+                    except:
+                        self.result.rt = ""
+                        self.result.rw = ""
 
     def master_process(self):
         raw_text = self.process(self.image)
