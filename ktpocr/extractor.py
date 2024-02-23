@@ -67,12 +67,13 @@ class KTPOCR(object):
 
             if "Tempat" in word:
                 word = word.split(':')
-                if re.search("([0-9]{2}\-[0-9]{2}\-[0-9]{4})", word[-1]) is None:
-                    self.result.tanggal_lahir = ""
-                    self.result.tempat_lahir = ""
-                else:
+                try:
                     self.result.tanggal_lahir = re.search("([0-9]{2}\-[0-9]{2}\-[0-9]{4})", word[-1])[0].translate(replace_table)
                     self.result.tempat_lahir = word[-1].replace(". "+self.result.tanggal_lahir, '').translate(replace_table)
+                except:
+                    self.result.tanggal_lahir = ""
+                    self.result.tempat_lahir = ""
+                    
                 continue
 
             if 'Darah' in word:
