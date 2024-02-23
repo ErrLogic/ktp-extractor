@@ -73,7 +73,7 @@ class KTPOCR(object):
                 except:
                     self.result.tanggal_lahir = ""
                     self.result.tempat_lahir = ""
-                    
+
                 continue
 
             if 'Darah' in word:
@@ -126,10 +126,14 @@ class KTPOCR(object):
                 self.result.status_perkawinan = word.split(':')[1].translate(replace_table).translate(remove_dash)
 
             if "RTRW" in word:
-                word = word.replace("RTRW",'')
-                if len(word.split('/')) > 1:
-                    self.result.rt = word.split('/')[0].strip().translate(replace_table).translate(remove_dash)
-                    self.result.rw = word.split('/')[1].strip().translate(replace_table).translate(remove_dash)
+                try:
+                    word = word.replace("RTRW",'')
+                    if len(word.split('/')) > 1:
+                        self.result.rt = word.split('/')[0].strip().translate(replace_table).translate(remove_dash)
+                        self.result.rw = word.split('/')[1].strip().translate(replace_table).translate(remove_dash)
+                except:
+                    self.result.rt = ""
+                    self.result.rw = ""
 
     def master_process(self):
         raw_text = self.process(self.image)
