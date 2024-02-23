@@ -128,7 +128,9 @@ class KTPOCR(object):
             if "RTRW" in word:
                 word = word.replace("RTRW",'')
                 try:
-                    if len(word.split('/')) > 1:
+                    content = word.split('/')
+                    
+                    if len(content) > 1:
                         self.result.rt = word.split('/')[0].strip().translate(replace_table).translate(remove_dash)
                         self.result.rw = word.split('/')[1].strip().translate(replace_table).translate(remove_dash)
                 except:
