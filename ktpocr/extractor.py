@@ -126,8 +126,8 @@ class KTPOCR(object):
                 self.result.status_perkawinan = word.split(':')[1].translate(replace_table).translate(remove_dash)
 
             if "RTRW" in word:
+                word = word.replace("RTRW",'')
                 try:
-                    word = word.replace("RTRW",'')
                     if len(word.split('/')) > 1:
                         self.result.rt = word.split('/')[0].strip().translate(replace_table).translate(remove_dash)
                         self.result.rw = word.split('/')[1].strip().translate(replace_table).translate(remove_dash)
